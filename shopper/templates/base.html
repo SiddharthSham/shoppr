@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="theme-color" content="#212121" />
+
+        <title>Shoppr. | Online Shopping List Generator</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Poppins" rel="stylesheet">
+		<link rel="manifest" href="{{ url_for('static', filename='manifest.json')}}">
+        <link rel='shortcut icon' type='image/x-icon' href="{{ url_for('static', filename='icon.ico')}}" />
+				
+		<!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="application-name" content="Aboard">
+
+		<!-- Homescreen icons -->
+        <link rel="apple-touch-icon" href="{{ url_for('static', filename='icon.ico')}}">
+        <link rel="apple-touch-icon" sizes="72x72" href="{{ url_for('static', filename='icon.ico')}}">
+        <link rel="apple-touch-icon" sizes="96x96" href="{{ url_for('static', filename='icon.ico')}}">
+        <link rel="apple-touch-icon" sizes="144x144" href="{{ url_for('static', filename='icon.ico')}}">
+        <link rel="apple-touch-icon" sizes="192x192" href="{{ url_for('static', filename='icon.ico')}}">
+
+    
+    </head>
+  
+<body>
+
+<!-- Navigation Bar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top shadow-sm">
+    <a class="navbar-brand font-weight-bolder" style="font-family: Montserrat; font-size: 28px" href="/"><i>SHOPPR.</i></a>
+    <button class="navbar-dark navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+    	<ul class="navbar-nav mr-auto align-items-center">
+    	</ul>
+    	<ul class="navbar-nav ml-auto align-items-center">
+            {% if g.user %}
+            <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('main.add') }}">Add to list</a>
+            </li>
+    		<li class="nav-item">
+    		<a class="nav-link active" href="{{ url_for('auth.logout') }}">Log Out</a>
+    		</li>
+			{% else %}
+    		<li class="nav-item">
+			<a class="nav-link active" href="{{ url_for('auth.login') }}">Login</a>
+			</li>		
+			{% endif %}
+    	</ul>
+    </div>
+    </nav>
+
+<section class="mt-4 mb-5">
+<!-- Page Content -->
+
+  <!-- Item List -->
+    <section class="p-3">
+      {% block content %}
+      {% endblock %}
+    </section>  
+
+
+</section>
+
+<footer class="footer">
+	<div class="container">
+	  <p class="text-muted text-center py-1">Copyright &copy; Siddharth Sham, 2018</p>
+	</div>
+</footer>
+
+<!--  core JavaScript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

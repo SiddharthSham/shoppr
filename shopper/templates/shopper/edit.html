@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="max-width:875px">
+{% block header %}
+  <h1 class="aboard mt-5 mb-4 text-center">{% block title %}Edit "{{ items['item_name'] }}" :{% endblock %}</h1>
+{% endblock %}
+  <form method="post">
+    <div class="form-group">
+    <label for="title" class="label">Item name: </label>
+    <input class="form-control form-control-lg mx-auto mb-4" name="item" id="item" value="{{ request.form['item'] or items['item_name'] }}" required>
+    <label for="body" class="label">Cost: </label>
+    <input class="form-control form-control-lg mx-auto mb-4" name="cost" id="cost" value="{{ request.form['cost'] or items['cost'] }}" required>
+    <button type="submit" class="btn btn-primary btn-lg d-inline w-25" value="Save">Save</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

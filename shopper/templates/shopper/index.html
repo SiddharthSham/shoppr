@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid p-0 mt-5">
+    <h1 class="mt-2 text-center mb-4">{% block title %}List: {% endblock %}</h1>
+<div class="card mx-auto shadow-sm bg-light" style="max-width: 875px;">
+  <ul class="list-group list-group-flush">
+  {% for item in list %}
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-md-3 my-auto">
+          <p class="card-text p-1">Item: {{ item['item_name'] }}</p>
+        </div>
+      <div class="col-md-2 my-auto">
+        <p class="card-text p-1">Cost: {{ item['cost'] }} &#x20b9</p>
+      </div>
+      <div class="col-md-4 p-1">
+        <div class="input-group mb-2">
+            <input type="text" class="form-control" aria-label="Text input with checkbox" placeholder="Enter quantity" value="{{ quantity }}">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Add to cart" name="selected" value="{{ item['id'] }}">
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="col-md-3 p-1">
+          <a href="{{ url_for('main.edit', id=item['id']) }} " class="btn btn-outline-primary float-right w-50">Edit</a>
+          <form action="{{ url_for('main.drop', id=item['id']) }}">
+            <button class="btn btn-outline-danger float-left" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this item? This action cannot be undone!');">Delete</button>
+          </form>
+        </div>
+      </div>
+    </li>
+  {% endfor %}
+  </ul>
+</div>
+<div class="container p-3" style="max-width: 875px;">
+  <a class="btn btn-primary btn-lg float-right" id="selectlist" value="{{ request.form.getlist('selected') }}" href="{{ url_for('main.checkout') }}">Checkout</a>
+</div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      $("button").click(function(){
+          var favorite = [];
+          $.each($("input[name='sport']:checked"), function(){            
+              favorite.push($(this).val());
+          });
+          alert("My favourite sports are: " + favorite.join(", "));
+      });
+  });
+</script>
+
+{% endblock %}

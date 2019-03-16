@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container-fluid">
+    <form method="post" class="mx-auto col-md-5">
+     <h1 class="mt-5">{% block title %}Register:{% endblock %}</h1>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-lg mt-4" placeholder="Enter Username" name="username" id="username" required></input>    
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control form-control-lg mb-4" placeholder="Enter Password" name="password" id="password" required></input>    
+    </div>
+    <button type="submit" class="btn btn-primary btn-lg w-100 mb-5" value="Register">Submit</button>
+  </form>
+  </div>
+</div>
+{% endblock %}

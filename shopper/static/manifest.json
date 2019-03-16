@@ -1,0 +1,21 @@
+{
+  "short_name": "Shoppr.",
+  "name": "Shoppr. | Online Shopping List Generator",
+  "icons": [
+    {
+      "src": "/static/icon.ico",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/icon.ico",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#000",
+  "display": "standalone",
+  "theme_color": "#757575"
+}
+

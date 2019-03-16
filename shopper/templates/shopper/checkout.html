@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container p-3 mt-5">
+<h1 class="mt-2 text-center mb-4">{% block title %}Confirm List: {% endblock %}</h1>
+<form action="{{ url_for('main.checkout') }}" method="POST">
+<div class="card mx-auto shadow-sm bg-dark" style="max-width: 875px;">
+        <ul class="list-group list-group-flush">
+        {% for item in list %}
+        <li class="list-group-item">
+          <div class="row">
+                <div class="col-md-4 my-auto">
+                    <p class="card-text p-1">Item: {{ item['item_name'] }}</p>
+                </div>
+                <div class="col-md-4 my-auto">
+                    <p class="card-text p-1">Cost: {{ item['cost'] }} &#x20b9</p>
+                </div>
+                <div class="col-md-4 my-auto">
+                    <p class="card-text p-1">Quantity: </p>
+                </div>
+        </li>
+        {% endfor %}
+        </ul>
+      </div>
+      <div class="container p-3" style="max-width: 875px;">
+        <a class="btn btn-primary btn-lg float-right" href="{{ url_for('main.view') }}">Save list</a>
+      </div>
+    </form>     
+</div>
+{% endblock %}
